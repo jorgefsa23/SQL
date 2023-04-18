@@ -12,7 +12,36 @@ SQL queries and other operations take the form of commands written as statements
 
 A table is the most basic unit of a database and consists of rows and columns of data. A single table holds records, and each record is stored in a row of the table. Tables are the most used type of database objects, or structures that hold or reference data in a relational database. Other types of database objects include the following:
 
-Views are logical representations of data assembled from one or more database tables.
-Indexes are lookup tables that help speed up database lookup functions.
-Reports consist of data retrieved from one or more tables, usually a subset of that data that is selected based on search criteria.
-Each column in a table corresponds to a category of data -- for example, customer name or address -- while each row contains a data value for the intersecting column.
+### SQL instructions are grouped in:
+1. DDL _ Data DEFINITION Language
+~~~sql
+CREATE
+DROP
+ALTER
+TRUNCATE
+~~~
+2. DML _ Data MANIPULATION Language
+~~~sql
+INSERT
+UPDATE
+DELETE
+~~~
+3. DML _ Data QUERY Language
+~~~sql
+SELECT
+SHOW
+HELP
+~~~
+4. DML _ Data CONTROL Language
+~~~sql
+GRANT
+REVOKE
+~~~
+5. DML _ Data TRANSACTION Language
+~~~sql
+START TRANSACTION
+SAVEPOINT
+COMMIT
+ROLLBACK [TO SAVEPOINT]
+RELEASE SAVEPOINT
+~~~
