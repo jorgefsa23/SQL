@@ -26,18 +26,18 @@ INSERT
 UPDATE
 DELETE
 ~~~
-3. DML _ Data QUERY Language
+3. DQL _ Data QUERY Language
 ~~~sql
 SELECT
 SHOW
 HELP
 ~~~
-4. DML _ Data CONTROL Language
+4. DCL _ Data CONTROL Language
 ~~~sql
 GRANT
 REVOKE
 ~~~
-5. DML _ Data TRANSACTION Language
+5. DTL _ Data TRANSACTION Language
 ~~~sql
 START TRANSACTION
 SAVEPOINT
