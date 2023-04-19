@@ -12,7 +12,7 @@ SQL queries and other operations take the form of commands written as statements
 
 A table is the most basic unit of a database and consists of rows and columns of data. A single table holds records, and each record is stored in a row of the table. Tables are the most used type of database objects, or structures that hold or reference data in a relational database. Other types of database objects include the following:
 
-### SQL instructions are grouped in:
+## SQL instructions are grouped in:
 1. DDL _ Data DEFINITION Language
 ~~~sql
 CREATE
