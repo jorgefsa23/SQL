@@ -30,19 +30,28 @@ INNER JOIN orders                               # table 2, INNER JOIN: by common
 ON customers.customer_id = orders.customer_id;  # specify which common column
 
 #6. HAVING: Filters records based on a condition that uses an aggregate function.
-SELECT country, AVG(price) as avg_price
-FROM products
-GROUP BY country
-HAVING AVG(price) > 1000;
+SELECT country, AVG(price) as avg_price     # selects a column country, the average price of products by country
+FROM products                               # from this table
+GROUP BY country                            # by country is how the average is calculated
+HAVING AVG(price) > 1000;                   # only averages of price > 1000 will be considered
 
 #7. LIMIT: Limits the number of records returned from the database.
-SELECT * FROM products LIMIT 10;
+SELECT * 
+FROM products 
+LIMIT 10;               # select the first 10 records in products
 
 #8. IN: Filters records based on multiple possible values.
-SELECT * FROM customers WHERE country IN ('USA', 'Canada');
+SELECT * 
+FROM customers          # select from this table
+WHERE country           # filter the results base on a condition
+IN ('USA', 'Canada');   # the condition is to match, either "USA" or "Canada"
 
 #9. NOT: Negates a condition.
-SELECT * FROM customers WHERE NOT country='USA';
+SELECT * 
+FROM customers 
+WHERE NOT country='USA';        # shows those that are not 'USA'
 
 #10. EXISTS: Tests for the existence of any record in a subquery.
-SELECT * FROM customers WHERE EXISTS (SELECT * FROM orders WHERE orders.customer_id = customers.customer_id);
+SELECT * 
+FROM customers 
+WHERE EXISTS (SELECT * FROM orders WHERE orders.customer_id = customers.customer_id);
