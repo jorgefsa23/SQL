@@ -17,10 +17,10 @@ ORDER BY price DESC;
 
 
 #4. GROUP BY: Groups rows based on a specified column.
-SELECT country, #select the column country
-COUNT(*)  #counts all rows
-FROM customers #table name
-GROUP BY country; #groups the result
+SELECT country,     #select the column country
+COUNT(*)            #counts all rows
+FROM customers      #table name
+GROUP BY country;   #groups the result
 
 
 #5. JOIN: Combines data from two or more tables based on a related column.
