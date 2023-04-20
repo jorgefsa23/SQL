@@ -18,46 +18,31 @@ ORDER BY price DESC;
 
 #4. GROUP BY: Groups rows based on a specified column.
 SELECT country,     #select the column country
-COUNT(*)            #counts all rows
+COUNT(*)            #counts all rows by country
 FROM customers      #table name
 GROUP BY country;   #groups the result
 
 
 #5. JOIN: Combines data from two or more tables based on a related column.
-SELECT customers.name, orders.order_date
-FROM customers
-INNER JOIN orders
-ON customers.customer_id = orders.customer_id;
+SELECT customers.name, orders.order_date        #two columns selected
+FROM customers                                  # table 1
+INNER JOIN orders                               # table 2, INNER JOIN: by common colum
+ON customers.customer_id = orders.customer_id;  # specify which common column
 
 #6. HAVING: Filters records based on a condition that uses an aggregate function.
-
-```
 SELECT country, AVG(price) as avg_price
 FROM products
 GROUP BY country
 HAVING AVG(price) > 1000;
-```
 
 #7. LIMIT: Limits the number of records returned from the database.
-
-```
 SELECT * FROM products LIMIT 10;
-```
 
 #8. IN: Filters records based on multiple possible values.
-
-```
 SELECT * FROM customers WHERE country IN ('USA', 'Canada');
-```
 
 #9. NOT: Negates a condition.
-
-```
 SELECT * FROM customers WHERE NOT country='USA';
-```
 
 #10. EXISTS: Tests for the existence of any record in a subquery.
-
-```
 SELECT * FROM customers WHERE EXISTS (SELECT * FROM orders WHERE orders.customer_id = customers.customer_id);
-```
