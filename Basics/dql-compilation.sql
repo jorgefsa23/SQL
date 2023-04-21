@@ -48,10 +48,11 @@ IN ('USA', 'Canada');   # the condition is to match, either "USA" or "Canada"
 
 #9. NOT: Negates a condition.
 SELECT * 
-FROM customers 
+FROM customers                  #from this table
 WHERE NOT country='USA';        # shows those that are not 'USA'
 
 #10. EXISTS: Tests for the existence of any record in a subquery.
-SELECT * 
-FROM customers 
+SELECT *                        #select all
+FROM customers                  #from this table... based on the next condition... a subquery
 WHERE EXISTS (SELECT * FROM orders WHERE orders.customer_id = customers.customer_id);
+# subquery: selcts all columns from table 'orders' where id matches with id in table 'customers'
