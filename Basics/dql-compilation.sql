@@ -57,20 +57,21 @@ FROM customers                  #from this table... based on the next condition.
 WHERE EXISTS (SELECT * FROM orders WHERE orders.customer_id = customers.customer_id);
 # subquery: selcts all columns from table 'orders' where id matches with id in table 'customers'
 
-#11. SUBQUERY: A query within a query. It is used to retrieve data that will be used in the main query.
-SELECT *
-FROM orders
-WHERE customer_id IN (
-    SELECT customer_id
-    FROM customers
-    WHERE country = 'USA'
+#11. SUBQUERY: A query within a query. To retrieve data that will be used in the main query.
+SELECT *                    #select all
+FROM orders                 #from this table
+WHERE customer_id IN (      #filtering by customer_id...
+    SELECT customer_id      #matching...
+    FROM customers          #on this table
+    WHERE country = 'USA'   #condition
 );
 
 #12. UNION: Combines the result of two or more SELECT statements into a single result set.
 SELECT name, email 
 FROM customers
 UNION
-SELECT name, email FROM employees;
+SELECT name, email 
+FROM employees;
 
 #13. WITH: Creates a temporary table that can be used in the main query.
 WITH top_customers AS (
