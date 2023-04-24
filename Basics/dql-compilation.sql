@@ -109,3 +109,39 @@ CASE
     ELSE 'High'
 END as price_category
 FROM products;
+
+#16. WINDOW FUNCTION: A function that performs a calculation across a set of rows that are related to the current row.
+SELECT name, price,
+AVG(price) OVER (PARTITION BY category) as avg_price
+FROM products;
+
+#17. SELF-JOIN: A join where a table is joined with itself.
+SELECT e.name, m.name as manager_name
+FROM employees e
+INNER JOIN employees m
+ON e.manager_id = m.employee_id;
+
+#18. PIVOT TABLE: A table that summarizes data by grouping and aggregating it in a different way.
+SELECT *
+FROM (
+    SELECT category, date_trunc('month', order_date) as month, SUM(price) as total_sales
+    FROM orders
+    INNER JOIN products
+    ON orders.product_id = products.product_id
+    GROUP BY category, date_trunc('month', order_date)
+) as sales
+PIVOT (
+    SUM(total_sales)
+    FOR month IN ('2022-01-01', '2022-02-01', '2022-03-01')
+) as monthly_sales;
+
+#19. CROSS JOIN: A join where every row of one table is combined with every row of another table.
+SELECT *
+FROM employees
+CROSS JOIN departments;
+
+#20. OUTER JOIN: A join that returns all rows from one table and matching rows from another table, and includes NULL values for non-matching rows.
+SELECT customers.name, orders.order_date
+FROM customers
+LEFT JOIN orders
+ON customers.customer_id = orders.customer_id;
