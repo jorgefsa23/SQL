@@ -56,3 +56,55 @@ SELECT *                        #select all
 FROM customers                  #from this table... based on the next condition... a subquery
 WHERE EXISTS (SELECT * FROM orders WHERE orders.customer_id = customers.customer_id);
 # subquery: selcts all columns from table 'orders' where id matches with id in table 'customers'
+
+#11. SUBQUERY: A query within a query. It is used to retrieve data that will be used in the main query.
+SELECT *
+FROM orders
+WHERE customer_id IN (
+    SELECT customer_id
+    FROM customers
+    WHERE country = 'USA'
+);
+
+#12. UNION: Combines the result of two or more SELECT statements into a single result set.
+SELECT name, email 
+FROM customers
+UNION
+SELECT name, email FROM employees;
+
+#13. WITH: Creates a temporary table that can be used in the main query.
+WITH top_customers AS (
+    SELECT customer_id, SUM(price) as total_spent
+    FROM orders
+    GROUP BY customer_id
+    ORDER BY total_spent DESC
+    LIMIT 10
+)
+SELECT customers.name, top_customers.total_spent
+FROM top_customers
+INNER JOIN customers
+ON top_customers.customer_id = customers.customer_id;
+
+#14. EXISTS vs JOIN: A comparison between using EXISTS and JOIN to achieve the same result.
+-- Using EXISTS --
+SELECT *
+FROM customers
+WHERE EXISTS (
+    SELECT *
+    FROM orders
+    WHERE orders.customer_id = customers.customer_id
+);
+-- Using JOIN --
+SELECT *
+FROM customers
+INNER JOIN orders
+ON customers.customer_id = orders.customer_id;
+
+#15. CASE: A conditional statement that returns a specific value based on a specified condition.
+SELECT name, price,
+CASE 
+    WHEN price < 10 THEN 'Low'
+    WHEN price >= 10 AND price < 50 THEN 'Medium'
+    ELSE 'High'
+END as price_category
+FROM products;
